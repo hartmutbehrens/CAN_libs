@@ -339,8 +339,6 @@ static signed char g_pcQueueMem[sizeof(void *) + portQUEUE_OVERHEAD_BYTES];
 static xQueueHandle g_pInterrupt;
 #endif
 
-extern void netif_status_change(struct netif *netif);
-
 //*****************************************************************************
 //
 // This task handles reading packets from the Ethernet controller and supplying
@@ -662,7 +660,7 @@ lwIPPrivateInit(void *pvArg)
               tcpip_input);
 #endif
     netif_set_default(&g_sNetIF);
-    netif_set_status_callback(&g_sNetIF, &netif_status_change);                     // call C2E netif status callback
+
     //
     // Start DHCP, if enabled.
     //
@@ -686,7 +684,7 @@ lwIPPrivateInit(void *pvArg)
     //
     // Bring the interface up.
     //
-    netif_set_up(&g_sNetIF);
+    // netif_set_up(&g_sNetIF);                                                 // exclude this because dhcp set status netif status to up when DHCP has been obtained
 
     //
     // Setup a timeout for the host timer callback function if using a RTOS.
