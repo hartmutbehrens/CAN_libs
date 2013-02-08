@@ -1,3 +1,2 @@
-driverlib/gcc-cm3/*
-driverlib/gcc-cm4f/*
 can_ethernet/*
+can_tx_generator/*
