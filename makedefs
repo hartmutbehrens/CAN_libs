@@ -123,7 +123,6 @@ CFLAGS=-mthumb             \
        -Wall               \
        -pedantic           \
        -DPART_${PART}      \
-       -g      \
        -c
 
 #
